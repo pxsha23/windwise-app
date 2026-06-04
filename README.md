@@ -1,22 +1,24 @@
-WindWise — an integrated, AI-driven wind energy forecasting and scheduling system that combines physics-based modeling, hybrid machine learning forecasting, and deep reinforcement learning to deliver wind power prediction and intelligent, stable, cost-efficient grid scheduling under real-world uncertainty.
+# 🌬️ WindWise
 
+An integrated, AI-driven wind energy forecasting and grid scheduling system — combining physics-based modeling, hybrid ML forecasting, and deep reinforcement learning to deliver accurate wind power prediction and cost-efficient grid dispatch under real-world uncertainty.
 
-Layer 1 - Physics-Based Modeling + CNN
+## Architecture
+**Layer 1 — Physics + CNN:** Turbine power modeling from atmospheric equations; CNN extracts spatial patterns across sensor locations.
 
-To model wind turbine power output using atmospheric physics equations and validate the output accuracy of physics-based power estimation against real wind speed data.
-To apply a Convolutional Neural Network to extract spatial patterns from multi-location wind data, creating structured and physically meaningful input features for downstream forecasting models.
+**Layer 2 — Hybrid Forecasting:** LSTM for temporal dependencies, XGBoost as a residual corrector for short-term wind power prediction.
 
-Layer 2 — Hybrid Forecasting (LSTM + XGBoost)
+**Layer 3 & 4 — DRL Scheduling:** Actor-critic agent trained on a simulated grid environment, deployed for day-ahead unit commitment on IEEE 39-bus and 118-bus benchmark systems.
 
-To design and train an LSTM model that captures temporal dependencies in wind speed and power time-series data for  short-term wind power forecasting.
-To integrate XGBoost as a residual corrector alongside LSTM outputs and evaluate the hybrid ensemble model's forecasting against LSTM and XGBoost baselines using different metrics.
+## Stack
 
-Layer 3 — DRL for Decision Modeling
+Python · React · PyTorch · XGBoost · scikit-learn
 
-To formulate the grid scheduling problem as a Markov Decision Process and design a state-action-reward framework that captures wind uncertainty, load demand, generator constraints, and battery storage dynamics.
-To implement and train an actor-critic deep reinforcement learning agent in a simulated IEEE bus system environment and evaluate its ability to learn a stable, cost-minimizing scheduling policy under varying wind and demand conditions.
+## Getting Started
 
-Layer 4 — DRL for Grid Scheduling
+```bash
+# Backend
+cd backend && pip install -r requirements.txt && python app.py
 
-To deploy the trained DRL policy for day-ahead generator commitment decisions on benchmark IEEE 39-bus and IEEE 118-bus systems and evaluate scheduling performance against traditional unit commitment methods.
-To validate that the end-to-end WindWise pipeline from physics modeling through forecasting to DRL scheduling, produces feasible, constraint-satisfying, and cost-efficient grid dispatch decisions under real-world wind power uncertainty
+# Frontend
+cd windwise && npm install && npm start
+```
